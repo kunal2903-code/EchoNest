@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { dummyStoriesData } from "../assets/assets";
 import { Plus } from "lucide-react";
 import moment from "moment";
-import StoryModel from "./StoryModel";
+import StoryModal from "./StoryModal";
+import StoryViewer from "./StoryViewer";
 
 const StoriesBar = () => {
   const [stories, setStories] = useState([]);
-  const [showModel, setShowModel] = useState(false);
+  const [showModal, setshowModal] = useState(false);
   const [viewStory, setViewStory] = useState(null);
 
   const fetchStories = async () => {
@@ -21,7 +22,7 @@ const StoriesBar = () => {
       <div className="flex gap-4 pb-5">
         {/* Add story card */}
         <div
-          onClick={() => setShowModel(true)}
+          onClick={() => setshowModal(true)}
           className="rounded-lg shadow-sm min-w-30 max-w-30 max-h-40 aspect-3/4 cursor-pointer hover:shadow-lg transition-all duration-200 border-2 border-dashed border-indigo-300 bg-linear-to-b from-indigo-50 to-white "
         >
           <div className="h-full flex flex-col items-center justify-center p-4">
@@ -36,6 +37,7 @@ const StoriesBar = () => {
         {/* Story Cards */}
         {stories.map((story, index) => (
           <div
+            onClick={() => setViewStory(story)}
             key={index}
             className={`relative rounded-lg shadow min-w-30 max-w-30 max-h-40 cursor-pointer hover:shadow-lg transition-all duration-200 bg-linear-to-b from-indigo-500 to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95`}
           >
@@ -69,9 +71,14 @@ const StoriesBar = () => {
           </div>
         ))}
       </div>
-      {/* Add Story Model */}
-      {showModel && (
-        <StoryModel setShowModel={setShowModel} fetchStories={fetchStories} />
+      {/* Add Story Modal */}
+      {showModal && (
+        <StoryModal setshowModal={setshowModal} fetchStories={fetchStories} />
+      )}
+
+      {/* view Story Modal */}
+      {viewStory && (
+        <StoryViewer viewStory={viewStory} setViewStory={setViewStory} />
       )}
     </div>
   );

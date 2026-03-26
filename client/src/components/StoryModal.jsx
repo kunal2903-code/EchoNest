@@ -2,7 +2,7 @@ import { ArrowLeft, Sparkle, TextIcon, Upload } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const StoryModel = ({ setShowModel, fetchStories }) => {
+const StoryModal = ({ setshowModal, fetchStories }) => {
   const bgColors = [
     "#4f46e5",
     "#7c3aed",
@@ -33,7 +33,7 @@ const StoryModel = ({ setShowModel, fetchStories }) => {
       <div className="w-full max-w-md">
         <div className="text-center mb-4 flex items-center justify-between">
           <button
-            onClick={() => setShowModel(false)}
+            onClick={() => setshowModal(false)}
             className="text-white p-2 cursor-pointer"
           >
             <ArrowLeft />
@@ -122,4 +122,4 @@ const StoryModel = ({ setShowModel, fetchStories }) => {
   );
 };
 
-export default StoryModel;
+export default StoryModal;
