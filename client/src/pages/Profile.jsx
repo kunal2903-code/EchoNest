@@ -47,6 +47,7 @@ const Profile = () => {
 
         {/* Tabs */}
         <div className="mt-6">
+          {/* Tab change options */}
           <div className="bg-white rounded-xl shadow p-1 flex max-w-md mx-auto">
             {["posts", "media", "likes"].map((tab) => (
               <button
